@@ -32,8 +32,12 @@ router.post('/sign-in', async (req, res) => {
         userInDatabase.password,
     );
     if (!validPassword) {
-        return res.send("Login failed. Please try again");
+        return res.send('Login failed. Please try again');
     };
+    req.session.user = {
+        username: userInDatabase.username,
+    };
+    res.redirect('/');
 });
 
 module.exports = router;
