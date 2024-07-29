@@ -32,7 +32,9 @@ app.use(
 );
 
 app.get('/', async (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', {
+        user: req.session.user,
+    });
 });
 app.use('/auth', authController);
 
